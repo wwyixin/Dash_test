@@ -54,21 +54,23 @@ color_scale = ['#458B74', '#838B8B','#66CDAA', '#E3CF57','#636EFA', '#00CC96',]
 # Define the app layout
 app.layout = html.Div([
     html.H1("I-880 Corridor Travel Time"),
-    # first figure
-        dcc.Graph(
+    # First figure
+    dcc.Graph(
         id='Corridor-TT-NB',
         figure={
             'data': [
                 {
                     'x': df_nb_off['time'], 'y': df_nb_off['TT_mean'], 'type': 'line', 'name': 'ARM off - Apr 2023',
-                    'line': {'color': 'orangered', 'dash': 'dot', 'width': 3}
+                    'line': {'color': 'orangered', 'dash': 'dot', 'width': 3},
+                    'hovertemplate': 'Time: %{x}<br>Travel Time: %{y:.1f}'
                 }] +
                 [{
                     'x': df_nb_on[df_nb_on['Scenario'] == scenario]['time'],
                     'y': df_nb_on[df_nb_on['Scenario'] == scenario]['TT_mean'],
                     'type': 'line',
                     'name': scenario,
-                    'line': {'color': color_scale[i], 'dash': 'solid'}
+                    'line': {'color': color_scale[i], 'dash': 'solid'},
+                    'hovertemplate': 'Time: %{x}<br>Travel Time: %{y:.1f}'
                 }
                 for i, scenario in enumerate(df_nb_on['Scenario'].unique())
             ],
@@ -84,24 +86,25 @@ app.layout = html.Div([
                 'yaxis': {'title': 'Travel Time (min)'},
                 'legend': {'x': 1, 'y': 1}
             }
-            }    
-
+        }
     ),
-    
+
     dcc.Graph(
         id='Corridor-TT-SB',
         figure={
             'data': [
                 {
                     'x': df_sb_off['time'], 'y': df_sb_off['TT_mean'], 'type': 'line', 'name': 'ARM off - Apr 2023',
-                    'line': {'color': 'orangered', 'dash': 'dot', 'width': 3}
+                    'line': {'color': 'orangered', 'dash': 'dot', 'width': 3},
+                    'hovertemplate': 'Time: %{x}<br>Travel Time: %{y:.1f}'
                 }] +
                 [{
                     'x': df_sb_on[df_sb_on['Scenario'] == scenario]['time'],
                     'y': df_sb_on[df_sb_on['Scenario'] == scenario]['TT_mean'],
                     'type': 'line',
                     'name': scenario,
-                    'line': {'color': color_scale[i], 'dash': 'solid'}
+                    'line': {'color': color_scale[i], 'dash': 'solid'},
+                    'hovertemplate': 'Time: %{x}<br>Travel Time: %{y:.1f}'
                 }
                 for i, scenario in enumerate(df_sb_on['Scenario'].unique())
             ],
@@ -120,8 +123,6 @@ app.layout = html.Div([
             }    
 
     )
-
-    
 ])
 
 # Run the app
