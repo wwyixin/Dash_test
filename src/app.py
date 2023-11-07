@@ -48,7 +48,7 @@ app.layout = html.Div([
         figure={
             'data': [
                 {
-                    'x': df_nb_off['time'], 'y': df_nb_off['TT_mean'], 'type': 'line', 'name': 'ARM off - Apr 2023',
+                    'x': df_nb_off['time'], 'y': df_nb_off['TT_mean'], 'type': 'line', 'name': 'ARM Off: Apr 2023',
                     'line': {'color': '#838B8B', 'dash': 'dot', 'width': 3},
                     'hovertemplate': 'Time: %{x}<br>Travel Time: %{y:.1f}'
                 }] +
@@ -67,8 +67,8 @@ app.layout = html.Div([
                 'xaxis': {
                     'title': '',
                     'tickmode': 'array',
-                    'tickvals': df_nb['time'].unique()[::12],
-                    'ticktext': df_nb['time'][::12],
+                    'tickvals': df_nb_on['time'].unique()[::12],
+                    'ticktext': df_nb_on['time'][::12],
                     'tickangle': 270,
                 },
                 'yaxis': {'title': 'Travel Time (min)'},
@@ -82,7 +82,7 @@ app.layout = html.Div([
         figure={
             'data': [
                 {
-                    'x': df_sb_off['time'], 'y': df_sb_off['TT_mean'], 'type': 'line', 'name': 'ARM off - Apr 2023',
+                    'x': df_sb_off['time'], 'y': df_sb_off['TT_mean'], 'type': 'line', 'name': 'ARM Off: Apr 2023',
                     'line': {'color': '#838B8B', 'dash': 'dot', 'width': 3},
                     'hovertemplate': 'Time: %{x}<br>Travel Time: %{y:.1f}'
                 }] +
@@ -101,8 +101,8 @@ app.layout = html.Div([
                 'xaxis': {
                     'title': '',
                     'tickmode': 'array',
-                    'tickvals': df_sb['time'].unique()[::12],
-                    'ticktext': df_sb['time'][::12],
+                    'tickvals': df_sb_on['time'].unique()[::12],
+                    'ticktext': df_sb_on['time'][::12],
                     'tickangle': 270,
                 },
                 'yaxis': {'title': 'Travel Time (min)'},
