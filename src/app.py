@@ -14,27 +14,15 @@ import pandas as pd
 
 # In[2]:
 
+df_sb_off = pd.read_csv('Mid-weekday SB Corridor Travel Time_Off.csv')
+df_sb_on = pd.read_csv('Mid-weekday SB Corridor Travel Time_On.csv')
 
-df_sb = pd.read_csv('Mid-weekday SB Corridor Travel Time all_sce.csv')
-
-
-# In[3]:
-
-
-df_sb_off = df_sb[df_sb['Scenario'] == 'ARM off - Apr 2023']
-df_sb_on = df_sb[df_sb['Scenario'] != 'ARM off - Apr 2023']
-
-
-# In[4]:
-
-
-df_nb = pd.read_csv('Mid-weekday NB Corridor Travel Time all_sce.csv')
 
 # In[5]:
 
 
-df_nb_off = df_nb[df_nb['Scenario'] == 'ARM off - Apr 2023']
-df_nb_on = df_nb[df_nb['Scenario'] != 'ARM off - Apr 2023']
+df_nb_off = pd.read_csv('Mid-weekday NB Corridor Travel Time_Off.csv')
+df_nb_on = pd.read_csv(r'Mid-weekday NB Corridor Travel Time_On.csv')
 
 
 # In[6]:
@@ -49,7 +37,7 @@ server = app.server
 # df_on = ...
 
 # Define color scales for the lines
-color_scale = ['#458B74', '#838B8B','#66CDAA', '#E3CF57','#636EFA', '#00CC96',]
+color_scale = ['#458B74', '#86b8dc','#bc6ca7','#ac7c60', '#FFA500',]
 
 # Define the app layout
 app.layout = html.Div([
@@ -61,7 +49,7 @@ app.layout = html.Div([
             'data': [
                 {
                     'x': df_nb_off['time'], 'y': df_nb_off['TT_mean'], 'type': 'line', 'name': 'ARM off - Apr 2023',
-                    'line': {'color': 'orangered', 'dash': 'dot', 'width': 3},
+                    'line': {'color': '#838B8B', 'dash': 'dot', 'width': 3},
                     'hovertemplate': 'Time: %{x}<br>Travel Time: %{y:.1f}'
                 }] +
                 [{
@@ -95,7 +83,7 @@ app.layout = html.Div([
             'data': [
                 {
                     'x': df_sb_off['time'], 'y': df_sb_off['TT_mean'], 'type': 'line', 'name': 'ARM off - Apr 2023',
-                    'line': {'color': 'orangered', 'dash': 'dot', 'width': 3},
+                    'line': {'color': '#838B8B', 'dash': 'dot', 'width': 3},
                     'hovertemplate': 'Time: %{x}<br>Travel Time: %{y:.1f}'
                 }] +
                 [{
